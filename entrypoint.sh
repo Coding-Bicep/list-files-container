@@ -8,4 +8,4 @@ do
     files_array+=($file)
 done
 
-echo "${files_array[@]}" >> $GITHUB_OUTPUT
+echo "$files_array" >> $GITHUB_OUTPUT
