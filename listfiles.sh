@@ -1,8 +1,8 @@
 #!/bin/bash -l
 
-cd $1
-
 pwd
+
+cd $1
 
 declare -a files_array
 for file in $2
