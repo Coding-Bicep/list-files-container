@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pwd
+echo ${GITHUB_WORKSPACE}
 cd $1
 
 declare -a files_array
