@@ -3,7 +3,6 @@
 pwd
 cd $1
 
-
 declare -a files_array
 for file in $2
 do
