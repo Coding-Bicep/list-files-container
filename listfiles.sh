@@ -1,6 +1,9 @@
 #!/bin/bash -l
 
 cd $1
+
+pwd
+
 declare -a files_array
 for file in $2
 do
