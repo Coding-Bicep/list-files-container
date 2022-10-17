@@ -1,0 +1,21 @@
+name: 'List files in directory'
+description: 'List all files in directory with extension'
+inputs:
+  directory_path:  # id of input
+    description: 'The directory to search in'
+    required: true
+    default: './'
+  extension:
+    description: 'The extension to filter'
+    required: true
+    default: '*.*'
+    
+outputs:
+  files: # id of output
+    description: 'The files as result'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.directory_path }}
+    - ${{ inputs.extension }}
