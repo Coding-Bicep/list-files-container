@@ -9,7 +9,6 @@ inputs:
     description: 'The extension to filter'
     required: true
     default: '*.*'
-    
 outputs:
   files: # id of output
     description: 'The files as result'
