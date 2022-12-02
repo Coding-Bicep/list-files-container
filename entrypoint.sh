@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#cd ${GITHUB_WORKSPACE}/modules
-cd $1
+cd ${GITHUB_WORKSPACE}/$1
+
 declare -a files_array
 for file in $2
 do
