@@ -15,7 +15,7 @@ do
     echo $file_path
     file_name_without_extension="${file%%.*}"
     echo $file_name_without_extension
-    files_array+=($file)
+    az bicep publish -f $file --target "br:$3/$file_name_without_extension:$4"
 done
 
 # echo "files=${files_array[@]}" >> $GITHUB_OUTPUT
