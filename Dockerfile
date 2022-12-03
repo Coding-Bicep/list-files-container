@@ -8,7 +8,7 @@ FROM alpine:latest
 #   jq
 
 RUN apk add py3-pip
-RUN apk add bash curl jq gcc musl-dev python3-dev libffi-dev openssl-dev cargo make libicu 
+RUN apk add bash curl jq gcc musl-dev python3-dev libffi-dev openssl-dev cargo make icu
 RUN pip install --upgrade pip
 RUN pip install azure-cli
 
