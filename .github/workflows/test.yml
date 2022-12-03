@@ -24,8 +24,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-      - name: List files
-        id: listFiles
+      - name: Deploy Modules
+        id: deployment
         uses: ./
         with:
           directory_path: "./"
@@ -36,14 +36,6 @@ jobs:
           clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
           tennantId: ${{ secrets.AZURE_TENANT_ID }}
       
-      # - name: Deploy modules
-      #   run: |
-      #     for file in ${{ steps.listFiles.outputs.files }}
-      #     do
-      #       file_path=$(dirname "${{ github.workspace }}/modules/$file")
-      #       echo $file_path
-      #       file_name_without_extension="${file%%.*}"
-      #       echo $file_name_without_extension
-      #       echo "Deploy Bicep Module $file_name to Container registry"
-      #       az bicep publish -f $file_path/$file --target "br:${{ secrets.CONTAINER_REGISTRY }}/$file_name_without_extension:v4.0"
-      #     done
+      - name: Result
+        run: |
+          echo ${{ steps.deployment.outputs.message }}
