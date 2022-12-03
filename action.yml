@@ -17,6 +17,18 @@ inputs:
     description: 'The version of modules'
     required: true
     default: ''
+  clinetId:
+    description: 'The version of modules'
+    required: true
+    default: ''
+  clientSecret:
+    description: 'The version of modules'
+    required: true
+    default: ''
+  tennantId:
+    description: 'The version of modules'
+    required: true
+    default: ''
 outputs:
   result: # id of output
     description: 'Result message'
@@ -28,3 +40,6 @@ runs:
     - ${{ inputs.extension }}
     - ${{ inputs.containerRegistry}}
     - ${{ inputs.version}}
+    - ${{ inputs.clinetId}}
+    - ${{ inputs.clientSecret}}
+    - ${{ inputs.tennantId}}

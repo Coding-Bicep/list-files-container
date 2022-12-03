@@ -32,6 +32,9 @@ jobs:
           extension: '*.bicep'
           containerRegistry: ${{ secrets.CONTAINER_REGISTRY }}
           version: "v5.0"
+          clientId: ${{ secrets.AZURE_CLIENT_ID }}
+          clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tennantId: ${{ secrets.AZURE_TENANT_ID }}
       
       # - name: Deploy modules
       #   run: |

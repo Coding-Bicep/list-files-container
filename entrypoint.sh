@@ -4,6 +4,9 @@ echo "Current Directory: $1"
 echo "Extension: $2"
 echo "Container Registry: $3"
 echo "Version: $4"
+echo "ClientId: $5"
+echo "Password: $6"
+echo "TennantId: : $7"
 
 cd ${GITHUB_WORKSPACE}
 
@@ -15,6 +18,7 @@ do
     echo $file_path
     file_name_without_extension="${file%%.*}"
     echo $file_name_without_extension
+    az login --service-principal --username "$5" --password "$6" --tenant "$7"
     az bicep publish -f $file --target "br:$3/$file_name_without_extension:$4"
 done
 
