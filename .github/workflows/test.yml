@@ -38,4 +38,4 @@ jobs:
       
       - name: Result
         run: |
-          echo ${{ steps.deployment.outputs.message }}
+          echo ${{ steps.deployment.outputs.result }}
