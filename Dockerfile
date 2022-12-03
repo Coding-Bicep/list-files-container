@@ -21,41 +21,22 @@
 # # Code file to execute when the docker container starts up (`entrypoint.sh`)
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM debian:jessie
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+# Container image that runs your code
+FROM mcr.microsoft.com/azure-cli
 
-ENV AZURE_CLI_VERSION "0.10.1"
-ENV NODEJS_APT_ROOT "node_4.x"
-ENV NODEJS_VERSION "4.2.4"
+# installes required packages for our script
+# RUN	apk add --no-cache \
+#   bash \
+#   curl \
+#   jq
 
-RUN apt-get update -qq && \
-    apt-get install -qqy --no-install-recommends\
-      apt-transport-https \
-      build-essential \
-      curl \
-      ca-certificates \
-      git \
-      lsb-release \
-      python-all \
-      rlwrap \
-      vim \
-      nano \
-      jq && \
-    rm -rf /var/lib/apt/lists/* && \
-    curl https://deb.nodesource.com/${NODEJS_APT_ROOT}/pool/main/n/nodejs/nodejs_${NODEJS_VERSION}-1nodesource1~jessie1_amd64.deb > node.deb && \
-      dpkg -i node.deb && \
-      rm node.deb && \
-      npm install --global azure-cli@${AZURE_CLI_VERSION} && \
-      azure --completion >> ~/azure.completion.sh && \
-      echo 'source ~/azure.completion.sh' >> ~/.bashrc && \
-      azure
+# RUN apk add py3-pip
+# RUN apk add bash curl jq gcc musl-dev python3-dev libffi-dev openssl-dev cargo make icu
+# RUN pip install --upgrade pip
+# RUN pip install azure-cli
 
-RUN azure config mode arm
-
-ENV EDITOR vim
-
-# # Copies your code file from your action repository to the filesystem path `/` of the container
+# Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
 # change permission to execute the script and
