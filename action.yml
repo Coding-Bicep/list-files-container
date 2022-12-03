@@ -1,4 +1,4 @@
-name: 'List files in directory'
+name: 'Deploy All Bicep Modules'
 description: 'List all files in directory with extension'
 inputs:
   directory_path:  # id of input
@@ -9,12 +9,22 @@ inputs:
     description: 'The extension to filter'
     required: true
     default: '*.*'
+  containerRegistry:
+    description: 'Container Registry data'
+    required: true
+    default: ''
+  version:
+    description: 'The version of modules'
+    required: true
+    default: ''
 outputs:
-  files: # id of output
-    description: 'The files as result'
+  result: # id of output
+    description: 'Result message'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.directory_path }}
     - ${{ inputs.extension }}
+    - ${{ inputs.containerRegistry}}
+    - ${{ inputs.version}}

@@ -1,0 +1,46 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Bicep Modules to Azure Container Registry
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # push:
+  #   branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure LogIn
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
+      - name: List files
+        id: listFiles
+        uses: ./
+        with:
+          directory_path: "./"
+          extension: '*.bicep'
+          containerRegistry: ${{ secrets.CONTAINER_REGISTRY }}
+          version: "v5.0"
+      
+      # - name: Deploy modules
+      #   run: |
+      #     for file in ${{ steps.listFiles.outputs.files }}
+      #     do
+      #       file_path=$(dirname "${{ github.workspace }}/modules/$file")
+      #       echo $file_path
+      #       file_name_without_extension="${file%%.*}"
+      #       echo $file_name_without_extension
+      #       echo "Deploy Bicep Module $file_name to Container registry"
+      #       az bicep publish -f $file_path/$file --target "br:${{ secrets.CONTAINER_REGISTRY }}/$file_name_without_extension:v4.0"
+      #     done
