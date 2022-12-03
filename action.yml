@@ -17,7 +17,7 @@ inputs:
     description: 'The version of modules'
     required: true
     default: ''
-  clinetId:
+  clientId:
     description: 'The version of modules'
     required: true
     default: ''
@@ -40,6 +40,6 @@ runs:
     - ${{ inputs.extension }}
     - ${{ inputs.containerRegistry}}
     - ${{ inputs.version}}
-    - ${{ inputs.clinetId}}
+    - ${{ inputs.clientId}}
     - ${{ inputs.clientSecret}}
     - ${{ inputs.tennantId}}
