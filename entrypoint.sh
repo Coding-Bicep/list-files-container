@@ -5,7 +5,7 @@ echo "Extension: $2"
 echo "Container Registry: $3"
 echo "Version: $4"
 
-# cd ${GITHUB_WORKSPACE}/$1
+cd ${GITHUB_WORKSPACE}
 
 declare -a files_array
 for file in $2
