@@ -4,8 +4,10 @@ FROM alpine:latest
 # installes required packages for our script
 RUN	apk add --no-cache \
   bash \
+  py-pip \
   curl \
-  jq
+  jq \
+  pip install azure-cli
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
