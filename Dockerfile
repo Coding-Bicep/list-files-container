@@ -2,12 +2,17 @@
 FROM alpine:latest
 
 # installes required packages for our script
-RUN	apk update && \
-  apk add bash py-pip curl jq && \
-  apk add --virtual=build gcc libffi-dev musl-dev openssl-dev python-dev make && \
-  pip --no-cache-dir install -U pip && \
-  pip install azure-cli && \
-  apk del --purge build
+# RUN	apk update && \
+#   apk add bash py-pip curl jq && \
+#   apk add --virtual=build gcc libffi-dev musl-dev openssl-dev python-dev make && \
+#   pip --no-cache-dir install -U pip && \
+#   pip install azure-cli && \
+#   apk del --purge build
+
+RUN apk add py3-pip
+RUN apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo make
+RUN pip install --upgrade pip
+RUN pip install azure-cli
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
