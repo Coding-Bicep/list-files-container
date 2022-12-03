@@ -3,8 +3,7 @@ FROM alpine:latest
 
 # installes required packages for our script
 RUN	apk update && \
-  apk add --no-cache \
-  bash py-pip curl jq && \
+  apk add bash py-pip curl jq && \
   apk add --virtual=build gcc libffi-dev musl-dev openssl-dev python-dev make && \
   pip --no-cache-dir install -U pip && \
   pip install azure-cli && \
