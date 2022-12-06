@@ -10,15 +10,12 @@
 # TennantId: : $7
 
 # cd ${GITHUB_WORKSPACE}
+az login --service-principal --username "$5" --password "$6" --tenant $7
 
 for file in $2
 do
-    echo $file
     file_path=$(dirname $file)
-    echo $file_path
     file_name_without_extension="${file%%.*}"
-    echo $file_name_without_extension
-    az login --service-principal --username "$5" --password "$6" --tenant $7
     az bicep publish -f $file --target "br:$3/$file_name_without_extension:$4"
 done
 
