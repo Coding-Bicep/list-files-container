@@ -31,7 +31,7 @@ jobs:
           directory_path: "./"
           extension: '*.bicep'
           containerRegistry: ${{ secrets.CONTAINER_REGISTRY }}
-          version: "v6.0"
+          version: "v7.0"
           clientId: ${{ secrets.AZURE_CLIENT_ID }}
           clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
           tennantId: ${{ secrets.AZURE_TENANT_ID }}
