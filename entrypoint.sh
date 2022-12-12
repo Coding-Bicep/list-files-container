@@ -16,7 +16,9 @@ for file in $2
 do
     file_path=$(dirname $file)
     file_name_without_extension="${file%%.*}"
-    az bicep publish -f $file --target "br:$3/$file_name_without_extension:$4"
+    acr="br:$3/$file_name_without_extension:$4"
+    echo $acr
+    az bicep publish -f $file --target $acr
 done
 
 echo "result=success" >> $GITHUB_OUTPUT
