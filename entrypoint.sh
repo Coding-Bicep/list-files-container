@@ -14,10 +14,11 @@ az login --service-principal --username "$5" --password "$6" --tenant $7
 
 for file in $2
 do
+    echo $file
     file_path=$(dirname $file)
+    echo $file_path
     file_name_without_extension="${file%%.*}"
     acr="br:$3/$file_name_without_extension:$4"
-    echo $acr
     az bicep publish -f $file --target $acr
 done
 
