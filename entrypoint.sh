@@ -9,6 +9,7 @@
 # Password: $6
 # TennantId: : $7
 
+echo "Samira Loging"
 # cd ${GITHUB_WORKSPACE}
 az login --service-principal --username "$5" --password "$6" --tenant $7
 
